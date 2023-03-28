@@ -11,4 +11,4 @@ npm run dev
 Note: 
 Install redux react-redux:
 ```
-npm 
+npm install redux react-redux
