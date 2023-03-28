@@ -1,17 +1,25 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addJob } from "../../actions/job";
 import styles from "./Home.module.css";
 import JobList from "../../components/JobList/JobList";
 
 function Home() {
-	const jobList = ["Job 1", "Job 2", "Job 3"];
-	const [jobName, setJobName] = useState('');
+	const jobList = useSelector((state) => state.job.list);
+	const dispatch = useDispatch();
+	const [jobName, setJobName] = useState("");
+	const jobNameInputRef = useRef(null);
 
 	const handleChangeJobName = (e) => {
 		setJobName(e.target.value);
-	}
+	};
 
 	const handleAddJob = () => {
-		console.log(jobName);
+		const addJobAction = addJob(jobName);
+		dispatch(addJobAction);
+
+		setJobName("");
+		jobNameInputRef.current.focus();
 	};
 
 	return (
@@ -23,7 +31,14 @@ function Home() {
 			<label className={styles.label} htmlFor="jobName">
 				Job name:
 			</label>
-			<input id="jobName" className={styles.input} type="text" value={jobName} onChange={handleChangeJobName} />
+			<input
+				ref={jobNameInputRef}
+				id="jobName"
+				className={styles.input}
+				type="text"
+				value={jobName}
+				onChange={handleChangeJobName}
+			/>
 			<button onClick={handleAddJob}>Add job</button>
 		</div>
 	);

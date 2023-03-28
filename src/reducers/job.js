@@ -8,7 +8,7 @@ const jobReducer = (state = initialState, action) => {
 		case "ADD_JOB": {
 			// For referecnce types that must be copied to a new object
 			// Should not be changed directly
-			const newList = state.list.splice(); // or [...state.list]
+			const newList = [...state.list]; // or state.list.slice()
 			newList.push(action.payload);
 
 			return {
