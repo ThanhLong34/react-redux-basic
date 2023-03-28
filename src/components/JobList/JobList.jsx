@@ -1,8 +1,8 @@
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import styles from "./JobList.module.css";
 
 JobList.propTypes = {
-	jobList: propTypes.array,
+	jobList: PropTypes.array,
 };
 
 function JobList({ jobList }) {
