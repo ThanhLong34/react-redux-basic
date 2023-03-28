@@ -1,0 +1,21 @@
+import propTypes from "prop-types";
+import styles from "./JobList.module.css";
+
+JobList.propTypes = {
+	jobList: propTypes.array,
+};
+
+function JobList({ jobList }) {
+	return (
+		<ul className={styles.list}>
+			{jobList &&
+				jobList.map((job, idx) => (
+					<li className={styles.item} key={idx}>
+						{job}
+					</li>
+				))}
+		</ul>
+	);
+}
+
+export default JobList;
