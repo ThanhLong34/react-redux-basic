@@ -6,7 +6,7 @@ const initialState = {
 const jobReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case "ADD_JOB": {
-			// For referecnce types that must be copied to a new object
+			// For reference types that must be copied to a new object
 			// Should not be changed directly
 			const newList = [...state.list]; // or state.list.slice()
 			newList.push(action.payload);
